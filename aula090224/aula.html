@@ -1,0 +1,568 @@
+
+Setting environment for using XAMPP for Windows.
+francislene.msouza@AME0510022W10-1 c:\xampp
+# mysql -h localhost -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database pizzaria;
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [(none)]> use pizzaria;
+Database changed
+MariaDB [pizzaria]> criate table pizza;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'criate table pizza' at line 1
+MariaDB [pizzaria]> create table pizza(
+    -> id auto id int not null auto_increment,
+    -> nome varchar(100),
+    -> ingredientes varchar(1000),
+    -> foto varchar(1000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id int not null auto_increment,
+nome varchar(100),
+ingredientes varchar(1000)...' at line 2
+MariaDB [pizzaria]> create table pizza(
+    ->     -> id auto id int not null auto_increment,
+    ->     -> nome varchar(100),
+    ->     -> ingredientes varchar(1000),
+    ->     -> foto varchar(1000)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> id auto id int not null auto_increment,
+    -> nome varchar(100),
+    -> i...' at line 2
+MariaDB [pizzaria]> create table pizza(
+    -> id auto id int not null auto_increment,
+    -> nome varchar(100),
+    -> ingredientes varchar(1000),
+    -> foto varchar(1000),
+    -> primary key(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id int not null auto_increment,
+nome varchar(100),
+ingredientes varchar(1000)...' at line 2
+MariaDB [pizzaria]> create table pizza(
+    -> id int not null auto_increment,
+    -> nome varchar(100),
+    -> ingredientes varchar(1000),
+    -> foto varchar(1000),
+    -> primary key(id)
+    -> );
+Query OK, 0 rows affected (0.018 sec)
+
+MariaDB [pizzaria]> create table cliente(
+    -> id int not null auto_increment,
+    -> nome varchar(100),
+    -> telefone varchar(20),
+    -> cidade varchar(100),
+    -> primary key(id)
+    -> );
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [pizzaria]> desc pizza;
++--------------+---------------+------+-----+---------+----------------+
+| Field        | Type          | Null | Key | Default | Extra          |
++--------------+---------------+------+-----+---------+----------------+
+| id           | int(11)       | NO   | PRI | NULL    | auto_increment |
+| nome         | varchar(100)  | YES  |     | NULL    |                |
+| ingredientes | varchar(1000) | YES  |     | NULL    |                |
+| foto         | varchar(1000) | YES  |     | NULL    |                |
++--------------+---------------+------+-----+---------+----------------+
+4 rows in set (0.027 sec)
+
+MariaDB [pizzaria]> desc clientes;
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> desc cliente;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nome     | varchar(100) | YES  |     | NULL    |                |
+| telefone | varchar(20)  | YES  |     | NULL    |                |
+| cidade   | varchar(100) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.023 sec)
+
+MariaDB [pizzaria]> Select * from pizza;
+Empty set (0.027 sec)
+
+MariaDB [pizzaria]> insert int pizza(Calabresa , ingrediente , foto.img)
+    -> values("calabresa" , "calabresa, cebola, azeitona, queijo, molho de tomate", "foto.img");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'int pizza(Calabresa , ingrediente , foto.img)
+values("calabresa" , "calabresa...' at line 1
+MariaDB [pizzaria]> insert int pizza(Calabresa , ingrediente , foto)
+    -> values("calabresa" , "calabresa, cebola, azeitona, queijo, molho de tomate", "foto.img");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'int pizza(Calabresa , ingrediente , foto)
+values("calabresa" , "calabresa, ce...' at line 1
+MariaDB [pizzaria]> INSERT INTO pizza (nome, ingrediente, foto) VALUES
+    -> ('Pizza de Pepperoni', 'Molho de tomate, queijo mozzarella, pepperoni', 'pepperoni.jpg'),
+    -> ('Pizza Margherita', 'Molho de tomate, queijo mozzarella, manjericão', 'margherita.jpg'),
+    -> ('Pizza Quatro Queijos', 'Molho de tomate, queijo mozzarella, parmesão, gorgonzola, provolone', 'quatro_queijos.jpg'),
+    -> ('Pizza de Calabresa', 'Molho de tomate, queijo mozzarella, calabresa fatiada', 'calabresa.jpg'),
+    -> ('Pizza de Frango com Catupiry', 'Molho de tomate, queijo mozzarella, frango desfiado, catupiry', 'frango_catupiry.jpg'),
+    -> ('Pizza Portuguesa', 'Molho de tomate, queijo mozzarella, presunto, cebola, ovo, azeitona, pimentão', 'portuguesa.jpg'),
+    -> ('Pizza Vegetariana', 'Molho de tomate, queijo mozzarella, tomate, cebola, pimentão, champignon, azeitona', 'vegetariana.jpg'),
+    -> ('Pizza de Calabresa com Catupiry', 'Molho de tomate, queijo mozzarella, calabresa fatiada, catupiry', 'calabresa_catupiry.jpg'),
+    -> ('Pizza de Atum', 'Molho de tomate, queijo mozzarella, atum em pedaços, cebola, azeitona', 'atum.jpg'),
+    -> ('Pizza de Camarão', 'Molho de tomate, queijo mozzarella, camarão, catupiry, cebola, pimentão', 'camarao.jpg');
+ERROR 1054 (42S22): Unknown column 'ingrediente' in 'field list'
+MariaDB [pizzaria]> INSERT INTO pizza (nome, ingredientes, foto) VALUES
+    -> ('Pizza de Pepperoni', 'Molho de tomate, queijo mozzarella, pepperoni', 'pepperoni.jpg'),
+    -> ('Pizza Margherita', 'Molho de tomate, queijo mozzarella, manjericão', 'margherita.jpg'),
+    -> ('Pizza Quatro Queijos', 'Molho de tomate, queijo mozzarella, parmesão, gorgonzola, provolone', 'quatro_queijos.jpg'),
+    -> ('Pizza de Calabresa', 'Molho de tomate, queijo mozzarella, calabresa fatiada', 'calabresa.jpg'),
+    -> ('Pizza de Frango com Catupiry', 'Molho de tomate, queijo mozzarella, frango desfiado, catupiry', 'frango_catupiry.jpg'),
+    -> ('Pizza Portuguesa', 'Molho de tomate, queijo mozzarella, presunto, cebola, ovo, azeitona, pimentão', 'portuguesa.jpg'),
+    -> ('Pizza Vegetariana', 'Molho de tomate, queijo mozzarella, tomate, cebola, pimentão, champignon, azeitona', 'vegetariana.jpg'),
+    -> ('Pizza de Calabresa com Catupiry', 'Molho de tomate, queijo mozzarella, calabresa fatiada, catupiry', 'calabresa_catupiry.jpg'),
+    -> ('Pizza de Atum', 'Molho de tomate, queijo mozzarella, atum em pedaços, cebola, azeitona', 'atum.jpg'),
+    -> ('Pizza de Camarão', 'Molho de tomate, queijo mozzarella, camarão, catupiry, cebola, pimentão', 'camarao.jpg');
+Query OK, 10 rows affected, 7 warnings (0.006 sec)
+Records: 10  Duplicates: 0  Warnings: 7
+
+MariaDB [pizzaria]> selec * from clientes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selec * from clientes' at line 1
+MariaDB [pizzaria]> select * from clientes;
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> select * pizza;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pizza' at line 1
+MariaDB [pizzaria]> desc pizza;
++--------------+---------------+------+-----+---------+----------------+
+| Field        | Type          | Null | Key | Default | Extra          |
++--------------+---------------+------+-----+---------+----------------+
+| id           | int(11)       | NO   | PRI | NULL    | auto_increment |
+| nome         | varchar(100)  | YES  |     | NULL    |                |
+| ingredientes | varchar(1000) | YES  |     | NULL    |                |
+| foto         | varchar(1000) | YES  |     | NULL    |                |
++--------------+---------------+------+-----+---------+----------------+
+4 rows in set (0.022 sec)
+
+MariaDB [pizzaria]> select * from pizza;
++----+---------------------------------+------------------------------------------------------------------------------------+------------------------+
+| id | nome                            | ingredientes                                                                       | foto                   |
++----+---------------------------------+------------------------------------------------------------------------------------+------------------------+
+|  1 | Pizza de Pepperoni              | Molho de tomate, queijo mozzarella, pepperoni                                      | pepperoni.jpg          |
+|  2 | Pizza Margherita                | Molho de tomate, queijo mozzarella, manjeric?o                                     | margherita.jpg         |
+|  3 | Pizza Quatro Queijos            | Molho de tomate, queijo mozzarella, parmes?o, gorgonzola, provolone                | quatro_queijos.jpg     |
+|  4 | Pizza de Calabresa              | Molho de tomate, queijo mozzarella, calabresa fatiada                              | calabresa.jpg          |
+|  5 | Pizza de Frango com Catupiry    | Molho de tomate, queijo mozzarella, frango desfiado, catupiry                      | frango_catupiry.jpg    |
+|  6 | Pizza Portuguesa                | Molho de tomate, queijo mozzarella, presunto, cebola, ovo, azeitona, piment?o      | portuguesa.jpg         |
+|  7 | Pizza Vegetariana               | Molho de tomate, queijo mozzarella, tomate, cebola, piment?o, champignon, azeitona | vegetariana.jpg        |
+|  8 | Pizza de Calabresa com Catupiry | Molho de tomate, queijo mozzarella, calabresa fatiada, catupiry                    | calabresa_catupiry.jpg |
+|  9 | Pizza de Atum                   | Molho de tomate, queijo mozzarella, atum em peda?os, cebola, azeitona              | atum.jpg               |
+| 10 | Pizza de Camar?o                | Molho de tomate, queijo mozzarella, camar?o, catupiry, cebola, piment?o            | camarao.jpg            |
++----+---------------------------------+------------------------------------------------------------------------------------+------------------------+
+10 rows in set (0.002 sec)
+
+MariaDB [pizzaria]> create table clientes;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [pizzaria]> select * from clientes;
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> Select * from clientes;
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> desc cliente;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nome     | varchar(100) | YES  |     | NULL    |                |
+| telefone | varchar(20)  | YES  |     | NULL    |                |
+| cidade   | varchar(100) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.027 sec)
+
+MariaDB [pizzaria]>  select * from clientes;
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> INSERT INTO clientes (nome, telefone, cidade) VALUES
+    -> ('João Silva', '(11) 1234-5678', 'São Paulo'),
+    -> ('Maria Oliveira', '(21) 9876-5432', 'Rio de Janeiro'),
+    -> ('Carlos Santos', '(81) 2345-6789', 'Recife'),
+    -> ('Ana Souza', '(31) 8765-4321', 'Belo Horizonte'),
+    -> ('Pedro Costa', '(85) 3456-7890', 'Fortaleza'),
+    -> ('Mariana Pereira', '(47) 6543-2109', 'Florianópolis'),
+    -> ('Paulo Santos', '(19) 4321-0987', 'Campinas'),
+    -> ('Fernanda Lima', '(61) 7890-1234', 'Brasília'),
+    -> ('Lucas Oliveira', '(48) 5678-9012', 'Porto Alegre'),
+    -> ('Juliana Martins', '(71) 9012-3456', 'Salvador'),
+    -> ('Rafael Gonçalves', '(84) 6789-0123', 'Natal'),
+    -> ('Carla Mendes', '(82) 3210-9876', 'Maceió'),
+    -> ('Daniel Almeida', '(27) 8901-2345', 'Vitória'),
+    -> ('Patrícia Costa', '(63) 1098-7654', 'Palmas'),
+    -> ('Thiago Fernandes', '(95) 8765-4321', 'Boa Vista'),
+    -> ('Aline Silva', '(92) 2345-6789', 'Manaus'),
+    -> ('Roberto Oliveira', '(79) 5432-1098', 'Aracaju'),
+    -> ('Camila Souza', '(98) 7654-3210', 'São Luís'),
+    -> ('Gustavo Santos', '(68) 4321-0987', 'Rio Branco'),
+    -> ('Larissa Martins', '(96) 6543-2109', 'Macapá'),
+    -> ('Henrique Pereira', '(45) 8901-2345', 'Curitiba'),
+    -> ('Vanessa Costa', '(31) 3210-9876', 'Contagem'),
+    -> ('Marcos Lima', '(35) 9012-3456', 'Varginha'),
+    -> ('Cristina Gonçalves', '(48) 6789-0123', 'Criciúma'),
+    -> ('Alexandre Mendes', '(24) 1098-7654', 'Resende'),
+    -> ('Sandra Almeida', '(61) 8765-4321', 'Goiânia'),
+    -> ('Luisa Costa', '(92) 2345-6789', 'Belém'),
+    -> ('Diego Oliveira', '(84) 5432-1098', 'Parnamirim'),
+    -> ('Eduarda Souza', '(82) 7654-3210', 'Maceió');
+ERROR 1146 (42S02): Table 'pizzaria.clientes' doesn't exist
+MariaDB [pizzaria]> INSERT INTO cliente (nome, telefone, cidade) VALUES
+    -> ('João Silva', '(11) 1234-5678', 'São Paulo'),
+    -> ('Maria Oliveira', '(21) 9876-5432', 'Rio de Janeiro'),
+    -> ('Carlos Santos', '(81) 2345-6789', 'Recife'),
+    -> ('Ana Souza', '(31) 8765-4321', 'Belo Horizonte'),
+    -> ('Pedro Costa', '(85) 3456-7890', 'Fortaleza'),
+    -> ('Mariana Pereira', '(47) 6543-2109', 'Florianópolis'),
+    -> ('Paulo Santos', '(19) 4321-0987', 'Campinas'),
+    -> ('Fernanda Lima', '(61) 7890-1234', 'Brasília'),
+    -> ('Lucas Oliveira', '(48) 5678-9012', 'Porto Alegre'),
+    -> ('Juliana Martins', '(71) 9012-3456', 'Salvador'),
+    -> ('Rafael Gonçalves', '(84) 6789-0123', 'Natal'),
+    -> ('Carla Mendes', '(82) 3210-9876', 'Maceió'),
+    -> ('Daniel Almeida', '(27) 8901-2345', 'Vitória'),
+    -> ('Patrícia Costa', '(63) 1098-7654', 'Palmas'),
+    -> ('Thiago Fernandes', '(95) 8765-4321', 'Boa Vista'),
+    -> ('Aline Silva', '(92) 2345-6789', 'Manaus'),
+    -> ('Roberto Oliveira', '(79) 5432-1098', 'Aracaju'),
+    -> ('Camila Souza', '(98) 7654-3210', 'São Luís'),
+    -> ('Gustavo Santos', '(68) 4321-0987', 'Rio Branco'),
+    -> ('Larissa Martins', '(96) 6543-2109', 'Macapá'),
+    -> ('Henrique Pereira', '(45) 8901-2345', 'Curitiba'),
+    -> ('Vanessa Costa', '(31) 3210-9876', 'Contagem'),
+    -> ('Marcos Lima', '(35) 9012-3456', 'Varginha'),
+    -> ('Cristina Gonçalves', '(48) 6789-0123', 'Criciúma'),
+    -> ('Alexandre Mendes', '(24) 1098-7654', 'Resende'),
+    -> ('Sandra Almeida', '(61) 8765-4321', 'Goiânia'),
+    -> ('Luisa Costa', '(92) 2345-6789', 'Belém'),
+    -> ('Diego Oliveira', '(84) 5432-1098', 'Parnamirim'),
+    -> ('Eduarda Souza', '(82) 7654-3210', 'Maceió');
+Query OK, 29 rows affected, 15 warnings (0.004 sec)
+Records: 29  Duplicates: 0  Warnings: 15
+
+MariaDB [pizzaria]> select * from cliente;
++----+--------------------+----------------+----------------+
+| id | nome               | telefone       | cidade         |
++----+--------------------+----------------+----------------+
+|  1 | Jo?o Silva         | (11) 1234-5678 | S?o Paulo      |
+|  2 | Maria Oliveira     | (21) 9876-5432 | Rio de Janeiro |
+|  3 | Carlos Santos      | (81) 2345-6789 | Recife         |
+|  4 | Ana Souza          | (31) 8765-4321 | Belo Horizonte |
+|  5 | Pedro Costa        | (85) 3456-7890 | Fortaleza      |
+|  6 | Mariana Pereira    | (47) 6543-2109 | Florian?polis  |
+|  7 | Paulo Santos       | (19) 4321-0987 | Campinas       |
+|  8 | Fernanda Lima      | (61) 7890-1234 | Bras?lia       |
+|  9 | Lucas Oliveira     | (48) 5678-9012 | Porto Alegre   |
+| 10 | Juliana Martins    | (71) 9012-3456 | Salvador       |
+| 11 | Rafael Gon?alves   | (84) 6789-0123 | Natal          |
+| 12 | Carla Mendes       | (82) 3210-9876 | Macei?         |
+| 13 | Daniel Almeida     | (27) 8901-2345 | Vit?ria        |
+| 14 | Patr?cia Costa     | (63) 1098-7654 | Palmas         |
+| 15 | Thiago Fernandes   | (95) 8765-4321 | Boa Vista      |
+| 16 | Aline Silva        | (92) 2345-6789 | Manaus         |
+| 17 | Roberto Oliveira   | (79) 5432-1098 | Aracaju        |
+| 18 | Camila Souza       | (98) 7654-3210 | S?o Lu?s       |
+| 19 | Gustavo Santos     | (68) 4321-0987 | Rio Branco     |
+| 20 | Larissa Martins    | (96) 6543-2109 | Macap?         |
+| 21 | Henrique Pereira   | (45) 8901-2345 | Curitiba       |
+| 22 | Vanessa Costa      | (31) 3210-9876 | Contagem       |
+| 23 | Marcos Lima        | (35) 9012-3456 | Varginha       |
+| 24 | Cristina Gon?alves | (48) 6789-0123 | Crici?ma       |
+| 25 | Alexandre Mendes   | (24) 1098-7654 | Resende        |
+| 26 | Sandra Almeida     | (61) 8765-4321 | Goi?nia        |
+| 27 | Luisa Costa        | (92) 2345-6789 | Bel?m          |
+| 28 | Diego Oliveira     | (84) 5432-1098 | Parnamirim     |
+| 29 | Eduarda Souza      | (82) 7654-3210 | Macei?         |
++----+--------------------+----------------+----------------+
+29 rows in set (0.001 sec)
+
+MariaDB [pizzaria]> exit
+Bye
+
+francislene.msouza@AME0510022W10-1 c:\xampp
+# mysql -h 10.125.47.20 -u aluno
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 97
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use bd_pizza;
+Database changed
+MariaDB [bd_pizza]> select * from clientes;
++----+-------------------------+----------------+----------------+
+| id | nome                    | telefone       | cidade         |
++----+-------------------------+----------------+----------------+
+|  1 | guto                    | 19 99999-9999  | Americana      |
+|  2 | Henrique Ribeiro Miguel | (11) 1234-5678 | S?o Paulo      |
+|  3 | Maria Oliveira          | (21) 9876-5432 | Rio de Janeiro |
+|  4 | Carlos Santos           | (81) 2345-6789 | Recife         |
+|  5 | Ana Souza               | (31) 8765-4321 | Belo Horizonte |
+|  6 | Pedro Costa             | (85) 3456-7890 | Fortaleza      |
+|  7 | Mariana Pereira         | (47) 6543-2109 | Florian?polis  |
+|  8 | Paulo Santos            | (19) 4321-0987 | Campinas       |
+|  9 | Fernanda Lima           | (61) 7890-1234 | Bras?lia       |
+| 10 | Lucas Oliveira          | (48) 5678-9012 | Porto Alegre   |
+| 11 | Juliana Martins         | (71) 9012-3456 | Salvador       |
+| 12 | Rafael Gon?alves        | (84) 6789-0123 | Natal          |
+| 13 | Carla Mendes            | (82) 3210-9876 | Macei?         |
+| 14 | Daniel Almeida          | (27) 8901-2345 | Vit?ria        |
+| 15 | Patr?cia Costa          | (63) 1098-7654 | Palmas         |
+| 16 | Thiago Fernandes        | (95) 8765-4321 | Boa Vista      |
+| 17 | Aline Silva             | (92) 2345-6789 | Manaus         |
+| 18 | Roberto Oliveira        | (79) 5432-1098 | Aracaju        |
+| 19 | Camila Souza            | (98) 7654-3210 | S?o Lu?s       |
+| 20 | Gustavo Santos          | (68) 4321-0987 | Rio Branco     |
+| 21 | Larissa Martins         | (96) 6543-2109 | Macap?         |
+| 22 | Henrique Pereira        | (45) 8901-2345 | Curitiba       |
+| 23 | Vanessa Costa           | (31) 3210-9876 | Contagem       |
+| 24 | Marcos Lima             | (35) 9012-3456 | Varginha       |
+| 25 | Cristina Gon?alves      | (48) 6789-0123 | Crici?ma       |
+| 26 | Alexandre Mendes        | (24) 1098-7654 | Resende        |
+| 27 | Sandra Almeida          | (61) 8765-4321 | Goi?nia        |
+| 28 | Luisa Costa             | (92) 2345-6789 | Bel?m          |
+| 29 | Diego Oliveira          | (84) 5432-1098 | Parnamirim     |
+| 30 | Eduarda Souza           | (82) 7654-3210 | Macei?         |
++----+-------------------------+----------------+----------------+
+30 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select * clientes order by nome;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'clientes order by nome' at line 1
+MariaDB [bd_pizza]> select * from clientes order by nome;
++----+-------------------------+-----------------+----------------+
+| id | nome                    | telefone        | cidade         |
++----+-------------------------+-----------------+----------------+
+| 26 | Alexandre Mendes        | (24) 1098-7654  | Resende        |
+| 17 | Aline Silva             | (92) 2345-6789  | Manaus         |
+|  5 | Ana Souza               | (31) 8765-4321  | Belo Horizonte |
+| 19 | Camila Souza            | (98) 7654-3210  | S?o Lu?s       |
+| 13 | Carla Mendes            | (82) 3210-9876  | Macei?         |
+|  4 | Carlos Santos           | (81) 2345-6789  | Recife         |
+| 25 | Cristina Gon?alves      | (48) 6789-0123  | Crici?ma       |
+| 14 | Daniel Almeida          | (27) 8901-2345  | Vit?ria        |
+| 29 | Diego Oliveira          | (84) 5432-1098  | Parnamirim     |
+| 30 | Eduarda Souza           | (82) 7654-3210  | Macei?         |
+| 31 | Enzo Bartels            | (19)981353149   | Sao Paulo      |
+|  9 | Fernanda Lima           | (61) 7890-1234  | Bras?lia       |
+| 20 | Gustavo Santos          | (68) 4321-0987  | Rio Branco     |
+|  1 | guto                    | 19 99999-9999   | Americana      |
+| 22 | Henrique Pereira        | (45) 8901-2345  | Curitiba       |
+|  2 | Henrique Ribeiro Miguel | (19) 99872-2087 | Americana      |
+| 11 | Juliana Martins         | (71) 9012-3456  | Salvador       |
+| 21 | Larissa Martins         | (96) 6543-2109  | Macap?         |
+| 10 | Lucas Oliveira          | (48) 5678-9012  | Porto Alegre   |
+| 28 | Luisa Costa             | (92) 2345-6789  | Bel?m          |
+| 24 | Marcos Lima             | (35) 9012-3456  | Varginha       |
+|  3 | Maria Oliveira          | (21) 9876-5432  | Rio de Janeiro |
+|  7 | Mariana Pereira         | (47) 6543-2109  | Florian?polis  |
+| 15 | Patr?cia Costa          | (63) 1098-7654  | Palmas         |
+|  8 | Paulo Santos            | (19) 4321-0987  | Campinas       |
+|  6 | Pedro Costa             | (85) 3456-7890  | Fortaleza      |
+| 12 | Rafael Gon?alves        | (84) 6789-0123  | Natal          |
+| 18 | Roberto Oliveira        | (79) 5432-1098  | Aracaju        |
+| 27 | Sandra Almeida          | (61) 8765-4321  | Goi?nia        |
+| 16 | Thiago Fernandes        | (95) 8765-4321  | Boa Vista      |
+| 23 | Vanessa Costa           | (31) 3210-9876  | Contagem       |
++----+-------------------------+-----------------+----------------+
+31 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select * from clientes order by nome desc;
++----+-------------------------+-----------------+----------------+
+| id | nome                    | telefone        | cidade         |
++----+-------------------------+-----------------+----------------+
+| 23 | Vanessa Costa           | (31) 3210-9876  | Contagem       |
+| 16 | Thiago Fernandes        | (95) 8765-4321  | Boa Vista      |
+| 27 | Sandra Almeida          | (61) 8765-4321  | Goi?nia        |
+| 18 | Roberto Oliveira        | (79) 5432-1098  | Aracaju        |
+| 12 | Rafael Gon?alves        | (84) 6789-0123  | Natal          |
+|  6 | Pedro Costa             | (85) 3456-7890  | Fortaleza      |
+|  8 | Paulo Santos            | (19) 4321-0987  | Campinas       |
+| 15 | Patr?cia Costa          | (63) 1098-7654  | Palmas         |
+|  7 | Mariana Pereira         | (47) 6543-2109  | Florian?polis  |
+|  3 | Maria Oliveira          | (21) 9876-5432  | Rio de Janeiro |
+| 24 | Marcos Lima             | (35) 9012-3456  | Varginha       |
+| 28 | Luisa Costa             | (92) 2345-6789  | Bel?m          |
+| 10 | Lucas Oliveira          | (48) 5678-9012  | Porto Alegre   |
+| 21 | Larissa Martins         | (96) 6543-2109  | Macap?         |
+| 11 | Juliana Martins         | (71) 9012-3456  | Salvador       |
+|  2 | Henrique Ribeiro Miguel | (19) 99872-2087 | Americana      |
+| 22 | Henrique Pereira        | (45) 8901-2345  | Curitiba       |
+|  1 | guto                    | 19 99999-9999   | Americana      |
+| 20 | Gustavo Santos          | (68) 4321-0987  | Rio Branco     |
+|  9 | Fernanda Lima           | (61) 7890-1234  | Bras?lia       |
+| 31 | Enzo Bartels            | (19)981353149   | Sao Paulo      |
+| 30 | Eduarda Souza           | (82) 7654-3210  | Macei?         |
+| 29 | Diego Oliveira          | (84) 5432-1098  | Parnamirim     |
+| 14 | Daniel Almeida          | (27) 8901-2345  | Vit?ria        |
+| 25 | Cristina Gon?alves      | (48) 6789-0123  | Crici?ma       |
+|  4 | Carlos Santos           | (81) 2345-6789  | Recife         |
+| 13 | Carla Mendes            | (82) 3210-9876  | Macei?         |
+| 19 | Camila Souza            | (98) 7654-3210  | S?o Lu?s       |
+|  5 | Ana Souza               | (31) 8765-4321  | Belo Horizonte |
+| 17 | Aline Silva             | (92) 2345-6789  | Manaus         |
+| 26 | Alexandre Mendes        | (24) 1098-7654  | Resende        |
++----+-------------------------+-----------------+----------------+
+31 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select nome, telefone from clientes order by nome;
++-------------------------+-----------------+
+| nome                    | telefone        |
++-------------------------+-----------------+
+| Alexandre Mendes        | (24) 1098-7654  |
+| Aline Silva             | (92) 2345-6789  |
+| Ana Souza               | (31) 8765-4321  |
+| Camila Souza            | (98) 7654-3210  |
+| Carla Mendes            | (82) 3210-9876  |
+| Carlos Santos           | (81) 2345-6789  |
+| Cristina Gon?alves      | (48) 6789-0123  |
+| Daniel Almeida          | (27) 8901-2345  |
+| Diego Oliveira          | (84) 5432-1098  |
+| Eduarda Souza           | (82) 7654-3210  |
+| Enzo Bartels            | (19)981353149   |
+| Fernanda Lima           | (61) 7890-1234  |
+| Gustavo Santos          | (68) 4321-0987  |
+| guto                    | 19 99999-9999   |
+| Henrique Pereira        | (45) 8901-2345  |
+| Henrique Ribeiro Miguel | (19) 99872-2087 |
+| Juliana Martins         | (71) 9012-3456  |
+| Larissa Martins         | (96) 6543-2109  |
+| Lucas Oliveira          | (48) 5678-9012  |
+| Luisa Costa             | (92) 2345-6789  |
+| Marcos Lima             | (35) 9012-3456  |
+| Maria Oliveira          | (21) 9876-5432  |
+| Mariana Pereira         | (47) 6543-2109  |
+| Patr?cia Costa          | (63) 1098-7654  |
+| Paulo Santos            | (19) 4321-0987  |
+| Pedro Costa             | (85) 3456-7890  |
+| Rafael Gon?alves        | (84) 6789-0123  |
+| Roberto Oliveira        | (79) 5432-1098  |
+| Sandra Almeida          | (61) 8765-4321  |
+| Thiago Fernandes        | (95) 8765-4321  |
+| Vanessa Costa           | (31) 3210-9876  |
++-------------------------+-----------------+
+31 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select cidade, nome, telefone from clientes order by cidade, nome;
++----------------+-------------------------+-----------------+
+| cidade         | nome                    | telefone        |
++----------------+-------------------------+-----------------+
+| Americana      | guto                    | 19 99999-9999   |
+| Americana      | Henrique Ribeiro Miguel | (19) 99872-2087 |
+| Aracaju        | Roberto Oliveira        | (79) 5432-1098  |
+| Bel?m          | Luisa Costa             | (92) 2345-6789  |
+| Belo Horizonte | Ana Souza               | (31) 8765-4321  |
+| Boa Vista      | Thiago Fernandes        | (95) 8765-4321  |
+| Bras?lia       | Fernanda Lima           | (61) 7890-1234  |
+| Campinas       | Paulo Santos            | (19) 4321-0987  |
+| Contagem       | Vanessa Costa           | (31) 3210-9876  |
+| Crici?ma       | Cristina Gon?alves      | (48) 6789-0123  |
+| Curitiba       | Henrique Pereira        | (45) 8901-2345  |
+| Florian?polis  | Mariana Pereira         | (47) 6543-2109  |
+| Fortaleza      | Pedro Costa             | (85) 3456-7890  |
+| Goi?nia        | Sandra Almeida          | (61) 8765-4321  |
+| Macap?         | Larissa Martins         | (96) 6543-2109  |
+| Macei?         | Carla Mendes            | (82) 3210-9876  |
+| Macei?         | Eduarda Souza           | (82) 7654-3210  |
+| Manaus         | Aline Silva             | (92) 2345-6789  |
+| Natal          | Rafael Gon?alves        | (84) 6789-0123  |
+| Palmas         | Patr?cia Costa          | (63) 1098-7654  |
+| Parnamirim     | Diego Oliveira          | (84) 5432-1098  |
+| Porto Alegre   | Lucas Oliveira          | (48) 5678-9012  |
+| Recife         | Carlos Santos           | (81) 2345-6789  |
+| Resende        | Alexandre Mendes        | (24) 1098-7654  |
+| Rio Branco     | Gustavo Santos          | (68) 4321-0987  |
+| Rio de Janeiro | Maria Oliveira          | (21) 9876-5432  |
+| S?o Lu?s       | Camila Souza            | (98) 7654-3210  |
+| Salvador       | Juliana Martins         | (71) 9012-3456  |
+| Sao Paulo      | Enzo Bartels            | (19)981353149   |
+| Varginha       | Marcos Lima             | (35) 9012-3456  |
+| Vit?ria        | Daniel Almeida          | (27) 8901-2345  |
++----------------+-------------------------+-----------------+
+31 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select nome, telefone from clientes order by cidade, nome;
++-------------------------+-----------------+
+| nome                    | telefone        |
++-------------------------+-----------------+
+| guto                    | 19 99999-9999   |
+| Henrique Ribeiro Miguel | (19) 99872-2087 |
+| Roberto Oliveira        | (79) 5432-1098  |
+| Luisa Costa             | (92) 2345-6789  |
+| Ana Souza               | (31) 8765-4321  |
+| Thiago Fernandes        | (95) 8765-4321  |
+| Fernanda Lima           | (61) 7890-1234  |
+| Paulo Santos            | (19) 4321-0987  |
+| Vanessa Costa           | (31) 3210-9876  |
+| Cristina Gon?alves      | (48) 6789-0123  |
+| Henrique Pereira        | (45) 8901-2345  |
+| Mariana Pereira         | (47) 6543-2109  |
+| Pedro Costa             | (85) 3456-7890  |
+| Sandra Almeida          | (61) 8765-4321  |
+| Larissa Martins         | (96) 6543-2109  |
+| Carla Mendes            | (82) 3210-9876  |
+| Eduarda Souza           | (82) 7654-3210  |
+| Aline Silva             | (92) 2345-6789  |
+| Rafael Gon?alves        | (84) 6789-0123  |
+| Patr?cia Costa          | (63) 1098-7654  |
+| Diego Oliveira          | (84) 5432-1098  |
+| Lucas Oliveira          | (48) 5678-9012  |
+| Carlos Santos           | (81) 2345-6789  |
+| Alexandre Mendes        | (24) 1098-7654  |
+| Gustavo Santos          | (68) 4321-0987  |
+| Maria Oliveira          | (21) 9876-5432  |
+| Camila Souza            | (98) 7654-3210  |
+| Juliana Martins         | (71) 9012-3456  |
+| Enzo Bartels            | (19)981353149   |
+| Marcos Lima             | (35) 9012-3456  |
+| Daniel Almeida          | (27) 8901-2345  |
++-------------------------+-----------------+
+31 rows in set (0.002 sec)
+MariaDB [bd_pizza]> select * from clientes where nome = "guto";
++----+------+---------------+-----------+
+| id | nome | telefone      | cidade    |
++----+------+---------------+-----------+
+|  1 | guto | 19 99999-9999 | Americana |
++----+------+---------------+-----------+
+1 row in set (0.002 sec)
+
+MariaDB [bd_pizza]> select * from clientes where id <= 10 order by nome;
++----+-------------------------+-----------------+----------------+
+| id | nome                    | telefone        | cidade         |
++----+-------------------------+-----------------+----------------+
+|  5 | Ana Souza               | (31) 8765-4321  | Belo Horizonte |
+|  4 | Carlos Santos           | (81) 2345-6789  | Recife         |
+|  9 | Fernanda Lima           | (61) 7890-1234  | Bras?lia       |
+|  1 | guto                    | 19 99999-9999   | Americana      |
+|  2 | Henrique Ribeiro Miguel | (19) 99872-2087 | Americana      |
+| 10 | Lucas Oliveira          | (48) 5678-9012  | Porto Alegre   |
+|  3 | Maria Oliveira          | (21) 9876-5432  | Rio de Janeiro |
+|  7 | Mariana Pereira         | (47) 6543-2109  | Florian?polis  |
+|  8 | Paulo Santos            | (19) 4321-0987  | Campinas       |
+|  6 | Pedro Costa             | (85) 3456-7890  | Fortaleza      |
++----+-------------------------+-----------------+----------------+
+10 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]> select * from clientes where nome like 'p%';
++----+----------------+----------------+-----------+
+| id | nome           | telefone       | cidade    |
++----+----------------+----------------+-----------+
+|  6 | Pedro Costa    | (85) 3456-7890 | Fortaleza |
+|  8 | Paulo Santos   | (19) 4321-0987 | Campinas  |
+| 15 | Patr?cia Costa | (63) 1098-7654 | Palmas    |
++----+----------------+----------------+-----------+
+3 rows in set (0.002 sec)
+MariaDB [bd_pizza]> select * from clientes where nome like '%p%';
++----+------------------+----------------+---------------+
+| id | nome             | telefone       | cidade        |
++----+------------------+----------------+---------------+
+|  6 | Pedro Costa      | (85) 3456-7890 | Fortaleza     |
+|  7 | Mariana Pereira  | (47) 6543-2109 | Florian?polis |
+|  8 | Paulo Santos     | (19) 4321-0987 | Campinas      |
+| 15 | Patr?cia Costa   | (63) 1098-7654 | Palmas        |
+| 22 | Henrique Pereira | (45) 8901-2345 | Curitiba      |
++----+------------------+----------------+---------------+
+5 rows in set (0.002 sec)
+
+MariaDB [bd_pizza]>
